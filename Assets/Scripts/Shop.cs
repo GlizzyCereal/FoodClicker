@@ -12,6 +12,10 @@ public class Shop : MonoBehaviour
     public float cookTime = 1; // Time to cook 1 click
 
     [Header("Clicker upgrade")]
+    public ShopButton clickerUpgradeButton;
+    public float clickerUpgradePrice = 100;
+    public int clickerUpgradeMultiplier = 2;
+    public GameObject newClickerModel;
 
     private Clicker clicker;
 
@@ -39,7 +43,14 @@ public class Shop : MonoBehaviour
 
     public void BuyClickerUpgrade()
     {
+        var realPrice = (int)Mathf.Ceil(clickerUpgradePrice);
+        if (clicker.clicks >= realPrice)
+        {
+            clicker.clicks -= realPrice;
+            UiManager.instance.UpdateClicks(clicker.clicks, clicker.totalCPS);
 
+            clickerUpgradeButton.Destroy();
+        }
     }
 
     public void Cook()

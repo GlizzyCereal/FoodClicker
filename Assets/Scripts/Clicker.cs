@@ -16,6 +16,7 @@ public class Clicker : MonoBehaviour
 
     [HideInInspector]public int clicks = 0;
     [HideInInspector]public int totalCPS = 0;
+    [HideInInspector]public int clickMultiplier = 0;
 
     private AudioSource audioSource;
    

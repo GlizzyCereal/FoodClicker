@@ -12,4 +12,9 @@ public class ShopButton : MonoBehaviour
         priceText.text = price.ToString();
         countText.text = count.ToString();
     }
+
+    public void Destroy()
+    {
+
+    }
 }
