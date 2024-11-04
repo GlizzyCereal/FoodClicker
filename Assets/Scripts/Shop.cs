@@ -8,12 +8,15 @@ public class Shop : MonoBehaviour
     public ShopButton bakerButton;
     public float bakerPrice = 10;
     public int bakerCount = 0;
+    public int cpb = 1; // Clicks per baker
+    public float cookTime = 1;
 
     private Clicker clicker;
 
     private void Start() 
     {
         clicker = FindObjectOfType<Clicker>();
+        InvokeRepeating("Cook", 0, cookTime);
     }
 
     public void BuyBaker()
@@ -28,5 +31,14 @@ public class Shop : MonoBehaviour
             realPrice = (int)Mathf.Ceil(bakerPrice);
             bakerButton.UpdateText(realPrice, ++bakerCount);
         }
+    }
+
+    public void Cook()
+    {
+        var particleCount = Mathf.Min(bakerCount * cpb, 100);
+        clicker.clickParticles.Emit(particleCount);
+
+        clicker.clicks += bakerCount * cpb;
+        UiManager.instance.UpdateClicks(clicker.clicks);
     }
 }
