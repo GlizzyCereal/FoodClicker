@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
@@ -50,6 +51,8 @@ public class Shop : MonoBehaviour
             UiManager.instance.UpdateClicks(clicker.clicks, clicker.totalCPS);
 
             clickerUpgradeButton.Destroy();
+
+            clicker.clickMultiplier = clickerUpgradeMultiplier;
         }
     }
 

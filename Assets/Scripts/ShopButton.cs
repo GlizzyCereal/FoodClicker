@@ -15,6 +15,6 @@ public class ShopButton : MonoBehaviour
 
     public void Destroy()
     {
-
+        Destroy(gameObject);
     }
 }
