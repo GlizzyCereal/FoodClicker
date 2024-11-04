@@ -15,6 +15,7 @@ public class Clicker : MonoBehaviour
     public ParticleSystem clickParticles;
 
     [HideInInspector]public int clicks = 0;
+    [HideInInspector]public int totalCPS = 0;
 
     private AudioSource audioSource;
    
@@ -27,7 +28,7 @@ public class Clicker : MonoBehaviour
     {
         clickParticles.Emit(1);
         clicks++;
-        UiManager.instance.UpdateClicks(clicks);
+        UiManager.instance.UpdateClicks(clicks, totalCPS);
         audioSource.pitch = Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(clickSound);
 
